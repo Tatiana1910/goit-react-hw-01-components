@@ -12,15 +12,7 @@ import {
   LabelValue,
 } from './Profile.styled';
 
-export const Profile = ({
-  user: {
-    avatar,
-    username,
-    tag,
-    location,
-    stats: { followers, views, likes },
-  },
-}) => {
+export const Profile = ({ avatar, username, tag, location, stats }) => {
   return (
     <Container>
       <UserThumb>
@@ -33,15 +25,15 @@ export const Profile = ({
       <StatList>
         <StatListItem>
           <Label>Followers</Label>
-          <LabelValue>{followers}</LabelValue>
+          <LabelValue>{stats.followers}</LabelValue>
         </StatListItem>
         <StatListItem>
           <Label>Views</Label>
-          <LabelValue>{views}</LabelValue>
+          <LabelValue>{stats.views}</LabelValue>
         </StatListItem>
         <StatListItem>
           <Label>Likes</Label>
-          <LabelValue>{likes}</LabelValue>
+          <LabelValue>{stats.likes}</LabelValue>
         </StatListItem>
       </StatList>
     </Container>
@@ -49,15 +41,13 @@ export const Profile = ({
 };
 
 Profile.propTypes = {
-  user: PropTypes.shape({
-    username: PropTypes.string.isRequired,
-    tag: PropTypes.string.isRequired,
-    location: PropTypes.string.isRequired,
-    avatar: PropTypes.string.isRequired,
-    stats: PropTypes.shape({
-      followers: PropTypes.number.isRequired,
-      views: PropTypes.number.isRequired,
-      likes: PropTypes.number.isRequired,
-    }),
+  username: PropTypes.string.isRequired,
+  tag: PropTypes.string.isRequired,
+  location: PropTypes.string.isRequired,
+  avatar: PropTypes.string.isRequired,
+  stats: PropTypes.shape({
+    followers: PropTypes.number.isRequired,
+    views: PropTypes.number.isRequired,
+    likes: PropTypes.number.isRequired,
   }).isRequired,
 };

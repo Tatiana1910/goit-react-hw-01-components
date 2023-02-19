@@ -9,22 +9,18 @@ import {
 } from './Statistics.styled';
 
 export const Statistics = ({ title, stats }) => {
-  const StatElems = ({ data }) => {
-    return data.map(({ label, percentage, id }) => {
-      return (
-        <ListItem key={id}>
-          <Label>{label} </Label>
-          <Percentage>{percentage}%</Percentage>
-        </ListItem>
-      );
-    });
-  };
-
   return (
     <Container>
       {title && <TitleStatistics>{title}</TitleStatistics>}
       <List>
-        <StatElems data={stats} />
+        {stats.map(({ label, percentage, id }) => {
+          return (
+            <ListItem key={id}>
+              <Label>{label} </Label>
+              <Percentage>{percentage}%</Percentage>
+            </ListItem>
+          );
+        })}
       </List>
     </Container>
   );
